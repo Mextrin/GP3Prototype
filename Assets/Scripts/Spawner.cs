@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [HideInInspector] public List<Vector3> spawnPoints = new List<Vector3>();
-    public List<int> spawnChance = new List<int>();
+    [HideInInspector] public List<int> spawnChance = new List<int>();
     public GameObject enemyToSpawn;
 
     public float cooldownTime;
