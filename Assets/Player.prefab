@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1271361355596391080}
   - component: {fileID: 7865192413793462870}
   - component: {fileID: 2094685017947606980}
+  - component: {fileID: 3449846170358031294}
+  - component: {fileID: 3449846170358031295}
   m_Layer: 0
   m_Name: Stick
   m_TagString: Untagged
@@ -86,11 +88,43 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3449846170358031293}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &3449846170358031294
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449846170358031293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1fc399927045384e98962fc43493673, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3449846170358031295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449846170358031293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fed0618dd647aa4e98fd81e0824e974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!1 &3765069352626427373
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,5 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ec34f6d21fff248951f6e4a38579ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stick: {fileID: 0}
   speed: 5
   rotationSpeed: 0.2
