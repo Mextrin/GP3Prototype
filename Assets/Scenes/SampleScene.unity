@@ -695,7 +695,7 @@ MonoBehaviour:
   spawnChance: 0a0000000a00000001000000
   enemyToSpawn: {fileID: 3220911205417303716, guid: ea8d28bb8c23e8a4fb06e03aa561f340,
     type: 3}
-  cooldownTime: 0
+  cooldownTime: 0.5
 --- !u!4 &2025512809
 Transform:
   m_ObjectHideFlags: 0
@@ -804,6 +804,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3449846170358031295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449846170358031293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fed0618dd647aa4e98fd81e0824e974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!1001 &3765069353537475085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -910,6 +923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094685017947606980, guid: ece5364b1b0d00c40b953129d21d6004,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ece5364b1b0d00c40b953129d21d6004, type: 3}

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     private Rigidbody rigidbody;
-    public Animator stickAnim;
+    public Stick stick;
 
     [SerializeField] float speed = 5.0f;
     [SerializeField] float rotationSpeed = 0.2f;
@@ -18,11 +18,10 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         input = GetComponent<InputHandler>();
+        stick = GetComponentInChildren<Stick>();
     }
     private void Update()
     {
-        if (stickAnim.GetBool("IsHitting")) stickAnim.SetBool("IsHitting", false);
-
         if (input.ConnectedController)
         {
             //Move
@@ -38,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown(input.Action))
             {
-                stickAnim.SetBool("IsHitting", true);
+                stick.isAttacking = true;
             }
         }
     }
