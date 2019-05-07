@@ -693,7 +693,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 40.426353}
   - {x: -35.16075, y: 0, z: 8.405518}
   spawnChance: 010000000100000001000000
-  enemyToSpawn: {fileID: 3220911205417303716, guid: ea8d28bb8c23e8a4fb06e03aa561f340,
+  enemyToSpawn: {fileID: 7727269804943338319, guid: 7aba2bb722d8ee449a965d0c9a4f1412,
     type: 3}
   cooldownTime: 0
 --- !u!4 &2025512809
