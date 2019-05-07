@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     InputHandler input;
 
     [Header("Movement")]
-    private Rigidbody rigidbody;
+    Rigidbody rigidbody;
     public Stick stick;
 
     [SerializeField] float speed = 5.0f;
