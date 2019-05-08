@@ -28,12 +28,15 @@ public class Destination : MonoBehaviour
     {
         if(useHealthBar)
         {
-            healthSlider.gameObject.SetActive(true);
-            healthText.gameObject.SetActive(true);
-            healthGoingUPText.gameObject.SetActive(false);
+            if(healthSlider && healthText && healthGoingUPText)
+            {
+                healthSlider.gameObject.SetActive(true);
+                healthText.gameObject.SetActive(true);
+                healthGoingUPText.gameObject.SetActive(false);
 
-            healthSlider.value = health;
-            healthText.text = health.ToString();
+                healthSlider.value = health;
+                healthText.text = health.ToString();
+            }
 
             if (health <= 0)
             {
@@ -52,11 +55,14 @@ public class Destination : MonoBehaviour
         }
         else
         {
-            healthSlider.gameObject.SetActive(false);
-            healthText.gameObject.SetActive(false);
+            if (healthSlider && healthText && healthGoingUPText)
+            {
+                healthSlider.gameObject.SetActive(false);
+                healthText.gameObject.SetActive(false);
 
-            healthGoingUPText.gameObject.SetActive(true);
-            healthGoingUPText.text = health2.ToString();
+                healthGoingUPText.gameObject.SetActive(true);
+                healthGoingUPText.text = health2.ToString();
+            }
 
             if (health2 >= 100)
             {
