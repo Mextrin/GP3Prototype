@@ -6087,16 +6087,16 @@ MonoBehaviour:
     pointChoiceChance: 100
     position: {x: 2.479981, y: 3.0372472, z: 37.44386}
   - enemiesToSpawn:
-    - {fileID: 2223547324846888987, guid: 7aba2bb722d8ee449a965d0c9a4f1412, type: 3}
+    - {fileID: -8422855517946597048, guid: 7aba2bb722d8ee449a965d0c9a4f1412, type: 3}
     enemySpawnChance: 01000000
-    pointChoiceChance: 50
+    pointChoiceChance: 5
     position: {x: -29.021278, y: 3.9339356, z: -9.819678}
   - enemiesToSpawn:
-    - {fileID: 2223547324846888987, guid: 7aba2bb722d8ee449a965d0c9a4f1412, type: 3}
+    - {fileID: -8422855517946597048, guid: 7aba2bb722d8ee449a965d0c9a4f1412, type: 3}
     enemySpawnChance: 01000000
-    pointChoiceChance: 50
+    pointChoiceChance: 20
     position: {x: 65.50785, y: 4.0399494, z: -9.922633}
-  cooldownTime: 1
+  cooldownTime: 0.4
 --- !u!4 &363175647
 Transform:
   m_ObjectHideFlags: 0
