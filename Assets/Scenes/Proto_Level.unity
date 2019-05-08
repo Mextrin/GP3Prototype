@@ -6066,14 +6066,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {x: 37.5, y: 2.9640503, z: 39}
-  - {x: 25, y: 0, z: 38}
-  - {x: 15, y: 0, z: 38}
-  - {x: 2.5, y: 3, z: 38}
-  spawnChance: 01000000010000000100000001000000
-  enemyToSpawn: {fileID: 3220911205417303716, guid: ea8d28bb8c23e8a4fb06e03aa561f340,
-    type: 3}
-  cooldownTime: 0.1
+  - enemiesToSpawn:
+    - {fileID: 6437227016382189040, guid: ea8d28bb8c23e8a4fb06e03aa561f340, type: 3}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 100
+    position: {x: 38.117405, y: 2.9716835, z: 38.55684}
+  - enemiesToSpawn:
+    - {fileID: 6437227016382189040, guid: ea8d28bb8c23e8a4fb06e03aa561f340, type: 3}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 100
+    position: {x: 29.517704, y: 0.7182865, z: 37.991173}
+  - enemiesToSpawn:
+    - {fileID: 6437227016382189040, guid: ea8d28bb8c23e8a4fb06e03aa561f340, type: 3}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 100
+    position: {x: 9.897468, y: 0.85059166, z: 38.0213}
+  - enemiesToSpawn:
+    - {fileID: 6437227016382189040, guid: ea8d28bb8c23e8a4fb06e03aa561f340, type: 3}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 100
+    position: {x: 2.479981, y: 3.0372472, z: 37.44386}
+  - enemiesToSpawn:
+    - {fileID: 2223547324846888987, guid: 7aba2bb722d8ee449a965d0c9a4f1412, type: 3}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 50
+    position: {x: -29.021278, y: 3.9339356, z: -9.819678}
+  - enemiesToSpawn:
+    - {fileID: 2223547324846888987, guid: 7aba2bb722d8ee449a965d0c9a4f1412, type: 3}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 50
+    position: {x: 65.50785, y: 4.0399494, z: -9.922633}
+  cooldownTime: 1
 --- !u!4 &363175647
 Transform:
   m_ObjectHideFlags: 0
