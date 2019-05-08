@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SpawnPoint
 {
-    List<GameObject> objectsToSpawn = new List<GameObject>();
-    Vector3 position;
-    int spawnChance = 1;
+    public SpawnPoint(Vector3 location)
+    {
+        position = location;
+    }
+
+    public List<Enemy> enemiesToSpawn = new List<Enemy>();
+    public List<int> enemySpawnChance = new List<int>();
+    public int pointChoiceChance = 1;
+    public Vector3 position;
 }
