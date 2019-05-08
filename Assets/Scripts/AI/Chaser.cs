@@ -6,13 +6,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Chaser : Enemy
 {
-    public GameObject target;
-     
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+    GameObject[] players;
+    GameObject target;
 
+    private void Start()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         float lowestDistance = float.MaxValue;
         int currentLowest = 0;
         for (int i = 0; i < players.Length; i++) //i += 1 //i = i + 1
@@ -27,12 +31,7 @@ public class Chaser : Enemy
         }
 
         target = players[currentLowest];
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         GetComponent<NavMeshAgent>().destination = target.transform.position;
-
     }
 }

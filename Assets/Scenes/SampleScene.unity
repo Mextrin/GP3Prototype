@@ -689,12 +689,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {x: 41.785934, y: 0, z: 24.369896}
-  - {x: 0, y: 0, z: 40.426353}
-  - {x: -35.16075, y: 0, z: 8.405518}
-  spawnChance: 010000000100000001000000
-  enemyToSpawn: {fileID: 7727269804943338319, guid: 7aba2bb722d8ee449a965d0c9a4f1412,
-    type: 3}
+  - enemiesToSpawn:
+    - {fileID: 0}
+    enemySpawnChance: 01000000
+    pointChoiceChance: 0
+    position: {x: -34.686604, y: 0, z: 1.898674}
+  - enemiesToSpawn: []
+    enemySpawnChance: 
+    pointChoiceChance: 0
+    position: {x: 31.442928, y: 0, z: 25.999176}
+  - enemiesToSpawn: []
+    enemySpawnChance: 
+    pointChoiceChance: 0
+    position: {x: -26.452215, y: 0, z: 26.688107}
   cooldownTime: 0
 --- !u!4 &2025512809
 Transform:
