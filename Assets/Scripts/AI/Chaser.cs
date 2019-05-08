@@ -12,26 +12,40 @@ public class Chaser : Enemy
     private void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
+
+        Destroy(gameObject, 15f);
     }
 
     // Update is called once per frame
     void Update()
     {
         float lowestDistance = float.MaxValue;
-        int currentLowest = 0;
+        target = null;
         for (int i = 0; i < players.Length; i++) //i += 1 //i = i + 1
         {
-            Vector3 playerPosition = players[i].transform.position;
-            float distance = Vector3.Distance(transform.position, playerPosition);
-            if (distance < lowestDistance)
+            if (players[i])
             {
-                lowestDistance = distance;
-                currentLowest = i;
+                Vector3 playerPosition = players[i].transform.position;
+                float distance = Vector3.Distance(transform.position, playerPosition);
+                if (distance < lowestDistance)
+                {
+                    lowestDistance = distance;
+                    target = players[i];
+                }
             }
         }
 
-        target = players[currentLowest];
+        if (target)
+            GetComponent<NavMeshAgent>().destination = target.transform.position;
+    }
 
-        GetComponent<NavMeshAgent>().destination = target.transform.position;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //Kill player here
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
