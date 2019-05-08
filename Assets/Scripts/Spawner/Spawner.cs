@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [HideInInspector] public List<Vector3> spawnPoints = new List<Vector3>();
-    [HideInInspector] public List<int> spawnChance = new List<int>();
-    public GameObject enemyToSpawn;
-
+    [HideInInspector] public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
     public float cooldownTime;
     float cooldownRemaining = 0;
 
@@ -24,17 +21,40 @@ public class Spawner : MonoBehaviour
             //Reset cooldown timer
             cooldownRemaining = cooldownTime;
 
+            int randomSpawner;
             //Spawn
-            List<int> SpawnID = new List<int>();
-            for (int i = 0; i < spawnChance.Count; i++)
             {
-                for (int j = 0; j < spawnChance[i]; j++)
+                int[] pointChoices = new int[spawnPoints.Count];
+                for (int i = 0; i < spawnPoints.Count; i++)
                 {
-                    SpawnID.Add(i);
+                    pointChoices[i] = spawnPoints[i].pointChoiceChance;
+                }
+
+                randomSpawner = RandomByChance(pointChoices);
+            }
+
+            SpawnPoint chosenSpawner = spawnPoints[randomSpawner];
+            if (chosenSpawner.enemiesToSpawn.Count > 0)
+            {
+                int randomEnemy = RandomByChance(chosenSpawner.enemySpawnChance.ToArray());
+                if (chosenSpawner.enemiesToSpawn[randomEnemy])
+                {
+                    Instantiate(chosenSpawner.enemiesToSpawn[randomEnemy], spawnPoints[randomSpawner].position, Quaternion.identity);
                 }
             }
-            int randomSpawner = Random.Range(0, SpawnID.Count);
-            Instantiate(enemyToSpawn, spawnPoints[SpawnID[randomSpawner]], Quaternion.identity);
         }
+    }
+
+    int RandomByChance(int[] chances)
+    {
+        List<int> chanceID = new List<int>();
+        for (int i = 0; i < chances.Length; i++)
+        {
+            for (int j = 0; j < chances[i]; j++)
+            {
+                chanceID.Add(i);
+            }
+        }
+        return chanceID[Random.Range(0, chanceID.Count)];
     }
 }
