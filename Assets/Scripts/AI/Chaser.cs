@@ -12,7 +12,6 @@ public class Chaser : Enemy
     private void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-
         Destroy(gameObject, 15f);
     }
 
@@ -33,10 +32,15 @@ public class Chaser : Enemy
                     target = players[i];
                 }
             }
+
         }
 
-        if (target)
-            GetComponent<NavMeshAgent>().destination = target.transform.position;
+        if (!target)
+        {
+            target = GameObject.Find("Goal");
+        }
+
+        GetComponent<NavMeshAgent>().destination = target.transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
