@@ -35,7 +35,7 @@ public class InputHandler : MonoBehaviour
         if (controllerID <= 0)
         {
             //See if any controller activates
-            for (int i = 1; i <= 2; i++)
+            for (int i = 1; i <= 3; i++)
             {
                 if (!assignedControllers.Contains(i) && Input.GetButtonDown("Controller" + i + "Action"))
                 {

@@ -74,48 +74,55 @@ public class SpawnerEditor : Editor
                             GUILayout.Label("Enemy spawn chance");
                         }
                         EditorGUILayout.EndHorizontal();
-                        for (int i = 0; i < spawnPoint.enemiesToSpawn.Count; i++)
+
+                        if (spawnPoint.enemiesToSpawn.Count > 0)
                         {
-                            EditorGUILayout.BeginHorizontal();
+                            for (int i = 0; i < spawnPoint.enemiesToSpawn.Count; i++)
                             {
-                                EditorGUI.BeginChangeCheck();
+                                EditorGUILayout.BeginHorizontal();
                                 {
-                                    Object pickedEnemy = spawnPoint.enemiesToSpawn[i] as Object;
-                                    Object selectedEnemy = EditorGUILayout.ObjectField(spawnPoint.enemiesToSpawn[i], typeof(Enemy), false);
+                                    EditorGUI.BeginChangeCheck();
+                                    {
+                                        Object pickedEnemy = spawnPoint.enemiesToSpawn[i] as Object;
+                                        Object selectedEnemy = EditorGUILayout.ObjectField(spawnPoint.enemiesToSpawn[i], typeof(Enemy), false);
 
-                                    if (EditorGUI.EndChangeCheck())
+                                        if (EditorGUI.EndChangeCheck())
+                                        {
+                                            EditorUtility.SetDirty(spawner);
+                                            Undo.RecordObject(spawner, "Changed enemy prefab in spawn list");
+
+                                            spawnPoint.enemiesToSpawn[i] = selectedEnemy as Enemy;
+                                        }
+                                    }
+                                    EditorGUI.BeginChangeCheck();
+                                    {
+                                        int newEnemySpawnChance = EditorGUILayout.IntField(spawnPoint.enemySpawnChance[i]);
+
+                                        if (EditorGUI.EndChangeCheck())
+                                        {
+                                            EditorUtility.SetDirty(spawner);
+                                            Undo.RecordObject(spawner, "Changed enemy spawn chance in spawn list");
+
+                                            spawnPoint.enemySpawnChance[i] = newEnemySpawnChance;
+                                        }
+                                    }
+
+                                    if (GUILayout.Button("-"))
                                     {
                                         EditorUtility.SetDirty(spawner);
-                                        Undo.RecordObject(spawner, "Changed enemy prefab in spawn list");
+                                        Undo.RecordObject(spawner, "Removed Enemy from SpawnPoint List");
 
-                                        spawnPoint.enemiesToSpawn[i] = selectedEnemy as Enemy;
+                                        spawnPoint.enemiesToSpawn.RemoveAt(i);
+                                        spawnPoint.enemySpawnChance.RemoveAt(i);
                                     }
                                 }
-
-                                EditorGUI.BeginChangeCheck();
-                                {
-                                    int newEnemySpawnChance = EditorGUILayout.IntField(spawnPoint.enemySpawnChance[i]);
-
-                                    if (EditorGUI.EndChangeCheck())
-                                    {
-                                        EditorUtility.SetDirty(spawner);
-                                        Undo.RecordObject(spawner, "Changed enemy spawn chance in spawn list");
-
-                                        spawnPoint.enemySpawnChance[i] = newEnemySpawnChance;
-                                    }
-                                }
-
-                                if (GUILayout.Button("-"))
-                                {
-                                    EditorUtility.SetDirty(spawner);
-                                    Undo.RecordObject(spawner, "Removed Enemy from SpawnPoint List");
-
-                                    spawnPoint.enemiesToSpawn.RemoveAt(i);
-                                    spawnPoint.enemySpawnChance.RemoveAt(i);
-                                }
+                                EditorGUILayout.EndHorizontal();
                             }
-                            EditorGUILayout.EndHorizontal();
                         }
+                    }
+                    else
+                    {
+                        GUILayout.Label("There are no registered enemies to spawn.");
                     }
 
                     if (GUILayout.Button("Add Enemy"))
