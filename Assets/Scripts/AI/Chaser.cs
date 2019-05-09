@@ -6,12 +6,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Chaser : Enemy
 {
-    GameObject[] players;
+    PlayerController[] players;
     GameObject target;
 
     private void Start()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players = GameObject.FindObjectsOfType<PlayerController>();
         Destroy(gameObject, 15f);
     }
 
@@ -22,14 +22,14 @@ public class Chaser : Enemy
         target = null;
         for (int i = 0; i < players.Length; i++) //i += 1 //i = i + 1
         {
-            if (players[i])
+            if (players[i] && players[i].isAlive)
             {
                 Vector3 playerPosition = players[i].transform.position;
                 float distance = Vector3.Distance(transform.position, playerPosition);
                 if (distance < lowestDistance)
                 {
                     lowestDistance = distance;
-                    target = players[i];
+                    target = players[i].gameObject;
                 }
             }
 
@@ -45,10 +45,11 @@ public class Chaser : Enemy
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (player && player.isAlive)
         {
             //Kill player here
-            Destroy(collision.gameObject);
+            player.KillPlayer();
             Destroy(gameObject);
         }
     }

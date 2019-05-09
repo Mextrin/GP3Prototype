@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [HideInInspector] public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
-    public float cooldownTime;
+    public float cooldownTime = 3f;
     float cooldownRemaining = 0;
 
     void Start()

@@ -13,6 +13,8 @@ public class InputHandler : MonoBehaviour
     public string Vertical { get { return "Controller" + controllerID + "Vertical"; } }
     public string Jump { get { return "Controller" + controllerID + "Jump"; } }
     public string Action { get { return "Controller" + controllerID + "Action"; } }
+    public string Action2 { get { return "Controller" + controllerID + "Action2"; } }
+    public string Join { get { return "Controller" + controllerID + "Join"; } }
 
     public static void FlushControllers()
     {
@@ -23,11 +25,11 @@ public class InputHandler : MonoBehaviour
     {
         controllers = Input.GetJoystickNames();
         //Makes sure player1 (keyboard) always has control in the game
-        if (!assignedControllers.Contains(1))
-        {
-            assignedControllers.Add(1);
-            controllerID = 1;
-        }
+        //if (!assignedControllers.Contains(1))
+        //{
+        //    assignedControllers.Add(1);
+        //    controllerID = 1;
+        //}
     }
 
     void Update()
@@ -35,9 +37,10 @@ public class InputHandler : MonoBehaviour
         if (controllerID <= 0)
         {
             //See if any controller activates
-            for (int i = 1; i <= 3; i++)
+            //Change the i <= NUMBER to the number of supported controllers and add inputs in the input manager
+            for (int i = 1; i <= 4; i++)
             {
-                if (!assignedControllers.Contains(i) && Input.GetButtonDown("Controller" + i + "Action"))
+                if (!assignedControllers.Contains(i) && Input.GetButtonDown("Controller" + i + "Join"))
                 {
                     controllerID = i;
                     assignedControllers.Add(i);
